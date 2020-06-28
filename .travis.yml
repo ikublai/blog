@@ -10,14 +10,14 @@ script:
   - docker run -e CI=true ikublai/blog npm run test
 
 deploy:
-  provide: elasticbeanstalk
+  provider: elasticbeanstalk
   region: "us-west-2"
-  app: docker
-  env: "Docker-env"
-  bucket_name: "elasicbeanstalk-use-west-2-xxxxx"
-  bucket_path: "docker"
+  app: "blog"
+  env: "Blog-prod"
+  bucket_name: "elasticbeanstalk-us-west-2-263596848727"
+  bucket_path: "blog"
   on:
     branch: master
-  access_key_id: $AWS_ACCESSKEY
+  access_key_id: $AWS_ACCESS_KEY
   secret_access_key:
     secure: "$AWS_SECRET_KEY"
