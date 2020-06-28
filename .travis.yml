@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t tukomodo/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run tukomodo/docker-react npm run test -- -- coverage
+
+deploy:
+  provide: elasticbeanstalk
+  region: "us-west-2"
+  app: docker
+  env: "Docker-env"
+  bucket_name: "elasicbeanstalk-use-west-2-xxxxx"
+  bucket_path: "docker"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESSKEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"

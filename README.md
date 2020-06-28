@@ -1,3 +1,7 @@
+docker build .
+docker run -p 8080:80 2cd8971cd2a7
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
